@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div  id="header">
+        {% include 'blocks/header.html.twig' %}
+    </div>
+    <div class="search">
+        <form>
+            <input type="search" name="q" placeholder="Поиск по сайту"> 
+            <input type="submit" value="Найти">
+        </form>
+    </div>
+    {% include 'blocks/admin.html.twig' %}
+    <div class="content regular ">
+        <div class="caside">
+            <div class="menu main">
+                {{ render(controller('AppBundle:Default:menu', {'currentUri': app.request.pathInfo})) }}
+            </div>
+            <div class="contact copy">
+                <p>Телефон: 0994389911 </p>
+            </div>
+        </div>
+        <div class="ccontent">
+            {% block content %}
+            {% endblock %}
+            <div>
+                <p class="center">
+                    <a href="http://www.edimdoma.ru/"><img  src="{{ asset('img/partner1.gif') }}" width=100 height=50 alt="Едим дома"></a>
+                    <a href="https://www.facebook.com/MasterChefUA"><img  src="{{ asset('img/partner3.png') }}" width=100 height=50 alt="Мастер Шеф"></a>
+                    <a href="http://www.1tv.ru/sprojects_editions/si=23"><img  src="{{ asset('img/partner2.png') }}" width=100 height=50 alt="Смак"></a>
+                </p>
+            </div>
+        </div>
+        <div class="center bottommenu ">
+            {{ render(controller('AppBundle:Default:menu', {'currentUri': app.request.pathInfo})) }}
+        </div>
+    </div>
+    <div class="aside">
+        {% include 'blocks/aside.html.twig' %}
+        <div class="copy"> 
+            <label id="copyright">Date/Time</label>
+            <p>
+                Maria Gulko&copy;2016 
+            </p>
+        </div>
+    </div>
+{% endblock %}
